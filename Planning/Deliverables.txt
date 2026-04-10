@@ -1,0 +1,11 @@
+1. Minimum working UX in either console or GUI (JavaFX) to insert, update, delete data to the employeeData MySQL database. 
+   (Note: using HTML for the UX will require microframeworks, services, extra work.) 
+
+2. PDF Report containing the following:
+    a. Database schema diagram from Beaver showing the original and these extra items. (OPTIONAL)
+    
+    b. Java class diagram (UML) showing code organization: 
+        a. Add new java classes to gather (get inputs) and store this employee information in a dynamic data structure
+        b. Abstract classes, interfaces, and super classes where needed
+
+3. A 7 to 15-minute video demonstration of the working software system.

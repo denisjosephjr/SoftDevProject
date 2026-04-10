@@ -1,0 +1,5 @@
+1. Update employee data (make it general enough using your new classes for all employee data)
+
+2. Search for employee
+
+3. Update salary for all employees less than a particular amount
