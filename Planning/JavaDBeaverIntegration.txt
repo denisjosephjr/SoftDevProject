@@ -1,0 +1,23 @@
+Ignore all of the following, I did the initial setup for this already for the repo:
+
+Download the official MySQL Connector/J JAR file from the following site:
+
+https://dev.mysql.com/downloads/connector/j/
+
+When selecting an operating system, select "Independent Platform".
+
+If you are Windows choose the ZIP Archive, if you are on iOS choose the TAR Archive.
+Then download. (You don't have to make an account, there is a small option to decline.)
+
+----------------------------------------------------------------------------------
+
+Now you must enter this command in Git BASH to properly configure the jar file:
+
+javac -cp mysql-connector.jar Main.java
+
+
+Then to run the file you input this command:
+
+For Windows: java -cp ".;mysql-connector.jar" Main
+
+For iOS: java -cp ".:mysql-connector.jar" Main
