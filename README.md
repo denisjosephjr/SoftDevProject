@@ -18,7 +18,7 @@ NOTE: There isn't a logon/ authorization functionality.
 
 For Groupmates: 
 
-When you clone the repo locally, you must run to commands to link the project with DBeaver.
+When you clone the repo locally, you must run 2 commands to link the project with DBeaver.
 First:
 
 javac -cp mysql-connector.jar Main.java
