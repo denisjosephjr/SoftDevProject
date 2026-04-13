@@ -49,6 +49,7 @@ create table employee_job_titles (
     foreign key (job_title_id) references job_titles(job_title_id)
 );
 
+-- Used decimal instead of float.
 create table payroll (
     payID INT,
     pay_date DATE,
