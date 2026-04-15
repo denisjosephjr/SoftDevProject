@@ -1,0 +1,18 @@
+Clone the Repository Locally to work on the project.
+(I recommend installing GitHub Desktop, its just easier to configure with VS Code)
+
+Run the "SetUpDatabase.sql" script in DBeaver. You should be able to go to DBeaver
+the click "File" -> "Open" -> Search for "SetUpDatabase.sql". Run the script and it 
+will set up a database on your system with some test values.
+
+Once that is done go to Main.java file in the src folder in the local repo. replace
+the password string with your actually DBeaver-MySQL password you used when setting
+it up. (Change it back to "password" if you commit a change). Save the file then right
+click it and press "Run Java" to run the file. (Run Code doesn't work, I learned the
+hard way for like an hour).
+
+You should see the employee names in the terminal (Nolan, Walter, Mark) and most of 
+the pain of the setup is done.
+
+If you have problems, let me know. The setup is not really intuitive and sometimes 
+a bit of a pain.

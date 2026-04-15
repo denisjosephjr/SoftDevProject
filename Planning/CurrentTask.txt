@@ -1,7 +1,7 @@
 Create a database in MySQL that matches the ED diagram that was provided. (Done)
 
-Insert test values in database.
+Insert test values in database. (Done)
 
-Figure out how to use JDBC Library so that Java modules can update MySQL databases in DBeaver.
+Figure out how to use JDBC Library so that Java modules can update MySQL databases in DBeaver.(Done)
 
 Get a general layout of project and assign tasks to group members.

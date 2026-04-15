@@ -11,10 +11,11 @@ Then download. (You don't have to make an account, there is a small option to de
 
 ----------------------------------------------------------------------------------
 
+Ignore this as well for now: 
+
 Now you must enter this command in Git BASH to properly configure the jar file:
 
 javac -cp mysql-connector.jar Main.java
-
 
 Then to run the file you input this command:
 
