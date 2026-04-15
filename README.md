@@ -15,15 +15,3 @@ Features:
    E.G. 3.2% for salary greater than, equal to 58K but less than 105K
 
 NOTE: There isn't a logon/ authorization functionality.
-
-For Groupmates: 
-
-When you clone the repo locally, you must run 2 commands to link the project with DBeaver.
-First:
-
-javac -cp lib/mysql-connector-9.6.0.jar Main.java
-
-Then this one:
-For Windows: java -cp ".;lib/mysql-connector-9.6.0.jar" Main
-
-For iOS: java -cp ".:lib/mysql-connector-9.6.0.jar" Main
