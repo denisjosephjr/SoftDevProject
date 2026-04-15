@@ -1,3 +1,4 @@
+package src;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,12 +9,12 @@ public class Main
     public static void main(String[] args) 
     {
        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver"); // New addition
 
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/employeeData",
                 "root",
-                "placeholder" // placeholder (for obvious reasons.)
+                "password" // password, placeholder for obvious reason.
             );
 
             Statement stmt = conn.createStatement();
