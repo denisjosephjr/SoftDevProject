@@ -13,7 +13,7 @@ public class Main
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/employeeData",
                 "root",
-                "placeholder" // placeholder (for obvious reasons.)
+                "password" // password, (placeholder for obvious reasons.)
             );
 
             Statement stmt = conn.createStatement();

@@ -21,9 +21,9 @@ For Groupmates:
 When you clone the repo locally, you must run 2 commands to link the project with DBeaver.
 First:
 
-javac -cp mysql-connector.jar Main.java
+javac -cp lib/mysql-connector-9.6.0.jar Main.java
 
 Then this one:
-For Windows: java -cp ".;mysql-connector.jar" Main
+For Windows: java -cp ".;lib/mysql-connector-9.6.0.jar" Main
 
-For iOS: java -cp ".:mysql-connector.jar" Main
+For iOS: java -cp ".:lib/mysql-connector-9.6.0.jar" Main
