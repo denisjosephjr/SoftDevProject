@@ -5,10 +5,14 @@ cd src
 java -cp ".:../lib/mysql-connector-j-9.6.0.jar" Main
 */
 
+// Imports for MySQL Integration
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+// Import for User Input
+import java.util.Scanner;
 
 public class Main 
 {
@@ -25,16 +29,40 @@ public class Main
                 "password" // password, (placeholder for obvious reasons.)
             );
             
+
             // Welcomes user to the UX
             System.out.println("\nHello User, welcome to the Employee Data UX.\n");
-            System.out.println("Please enter a number for a corresponding option: ");
 
-            /*
-            TODO:
-            Display all options that the user can do (Report Generation, Update Data, etc.) with a corresponding number.
-            Takes user input as a var, then checks var using branching to lead to another class with appropriate methods.
-            */
+            // Displays all options that the user can do with a corresponding number.
+            System.out.println("1. Generate Report\n2. Change Employee Table\n3. Search for Employee");
+            System.out.println("4. Update Employee Data\n5. Update Employee Salary");
+            
+            // Creates scanner to take user input
+            Scanner scanner = new Scanner(System.in);
+        
+            // Takes user input.
+            System.out.print("\nPlease enter a number for a corresponding option: ");
+            int userInput = scanner.nextInt();
 
+            // TODO: Define classes to link to this branching segment.
+            if (userInput == 1) {
+                System.out.println("User Input is 1"); // Placeholder
+
+            } else if (userInput == 2) {
+                System.out.println("User Input is 2"); // Placeholder
+
+            } else if (userInput == 3) {
+                System.out.println("User Input is 3"); // Placeholder
+
+            } else if (userInput == 4) {
+                System.out.println("User Input is 4"); // Placeholder
+
+            } else if (userInput == 5) {
+                System.out.println("User Input is 5"); // Placeholder
+
+            }
+            
+            
             // Creates a statement that executes a query and saves the result. (Just test code for the database.)
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM employees");
@@ -47,8 +75,11 @@ public class Main
             // Empty print statement for terminal spacing clarity.
             System.out.println("");
 
+            // This method cuts the connection of the scanner (that takes user input).
+            scanner.close();
             // This method cuts the connections between the Java file and the MySQL database.
             conn.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         } 
