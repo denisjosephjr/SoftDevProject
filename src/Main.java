@@ -22,11 +22,18 @@ public class Main
             // Line to help recognize the jar file
             Class.forName("com.mysql.cj.jdbc.Driver");
 
+            // Creates scanner to take user input
+            Scanner scanner = new Scanner(System.in);
+
+            // Enter your MySQL password
+            System.out.print("\nPlease enter your MySQL-DBeaver password: ");
+            String password = scanner.nextLine();
+
             // This variable creates the connection between the Java file and the MySQL database.
             Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/employeeData",
                 "root",
-                "password" // password, (placeholder for obvious reasons.)
+                password // MySQL-DBeaver Password.
             );
             
 
@@ -37,16 +44,18 @@ public class Main
             System.out.println("1. Generate Report\n2. Change Employee Table\n3. Search for Employee");
             System.out.println("4. Update Employee Data\n5. Update Employee Salary");
             
-            // Creates scanner to take user input
-            Scanner scanner = new Scanner(System.in);
-        
+            
+            // Need a while loop for this segment eventually.
             // Takes user input.
             System.out.print("\nPlease enter a number for a corresponding option: ");
             int userInput = scanner.nextInt();
 
             // TODO: Define classes to link to this branching segment.
+            // NOTE: This could have been a switch case statement.
+            // NOTE: Need error handling for invalid user input.
             if (userInput == 1) {
-                System.out.println("User Input is 1"); // Placeholder
+                ReportGenerator report1 = new ReportGenerator(conn);
+                report1.reportHandling();
 
             } else if (userInput == 2) {
                 System.out.println("User Input is 2"); // Placeholder
@@ -72,9 +81,10 @@ public class Main
             while (rs.next()) {
                 System.out.println(rs.getString("Fname"));
             }
+
+            
             // Empty print statement for terminal spacing clarity.
             System.out.println("");
-
             // This method cuts the connection of the scanner (that takes user input).
             scanner.close();
             // This method cuts the connections between the Java file and the MySQL database.
