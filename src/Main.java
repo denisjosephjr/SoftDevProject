@@ -58,30 +58,25 @@ public class Main
                 report1.reportHandling();
 
             } else if (userInput == 2) {
-                System.out.println("User Input is 2"); // Placeholder
+                ChangeEmployeeTable report2 = new ChangeEmployeeTable(conn);
+                // TODO: Method call
 
             } else if (userInput == 3) {
-                System.out.println("User Input is 3"); // Placeholder
+                SearchForEmployee report3 = new SearchForEmployee(conn);
+                // TODO: Method call
 
             } else if (userInput == 4) {
-                System.out.println("User Input is 4"); // Placeholder
+                UpdateEmployeeData report4 = new UpdateEmployeeData(conn);
+                // TODO: Method call
 
             } else if (userInput == 5) {
-                System.out.println("User Input is 5"); // Placeholder
+                UpdateEmployeeSalary report2 = new UpdateEmployeeSalary(conn);
+                // TODO: Method call
 
+            } else {
+                System.out.println("User input not valid.");
+                // TODO: Still need better error handling.
             }
-            
-            
-            // Creates a statement that executes a query and saves the result. (Just test code for the database.)
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM employees");
-            
-            // prints the results of the SQL Query
-            System.out.println("\n\nJust testing Database connection with Employee Names: ");
-            while (rs.next()) {
-                System.out.println(rs.getString("Fname"));
-            }
-
             
             // Empty print statement for terminal spacing clarity.
             System.out.println("");

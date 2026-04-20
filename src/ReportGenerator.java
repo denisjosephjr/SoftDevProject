@@ -16,6 +16,8 @@ public class ReportGenerator {
     public ReportGenerator(Connection conn) {
         this.conn = conn;
     }
+
+    // Method that handles the report interaction
     public void reportHandling() {
 
         System.out.println("\nWhat kind of report would you like?");
@@ -53,6 +55,7 @@ public class ReportGenerator {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM employees");
 
+            // TODO: Make spacing uniform in terminal
             while (rs.next()) { // while there is a next row
                 // print the string with the column label Fname
                 System.out.println(
@@ -71,10 +74,10 @@ public class ReportGenerator {
 
 
     public void payByJobTitle() {
-        System.out.println("Successful method call.");
+        System.out.println("payByJobTitle method call."); // placeholder
     }
 
     public void payByDivision() {
-        System.out.println("Successful method call.");
+        System.out.println("payByDivision call."); // placeholder
     }
 }
