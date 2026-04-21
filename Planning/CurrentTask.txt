@@ -4,4 +4,31 @@ Insert test values in database. (Done)
 
 Figure out how to use JDBC Library so that Java modules can update MySQL databases in DBeaver.(Done)
 
-Get a general layout of project and assign tasks to group members.
+Get a general layout of project. (Done)
+
+**Assign tasks to group members.**
+
+----------------------------------------------------------------------------------------------------
+Main:
+    Add a while loop in the selection part with the condition that user input isn't a quit value
+
+ReportGenerator:
+    Add a while loop in reportHandling that handles user input errors.
+    Correct employeeInformation method.
+    Write payByJobTitle method.
+    Write payByDivision method.
+
+ChangeEmployeeTable:
+    Add a while loop in changeHandling that handles user input errors.
+
+SearchForEmployee:
+    Add a while loop in searchHandling that handles user input errors.
+    Write searchName method.
+    Write searchSSN method.
+    Write searchEmpid method.
+    
+UpdateEmployeeData:
+    Determine method structure.
+
+UpdateEmployeeSalary:
+    Determine method structure.

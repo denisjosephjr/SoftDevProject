@@ -31,17 +31,17 @@ public class ReportGenerator {
 
         // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
-        int reportType = scanner2.nextInt();
+        int report1Type = scanner2.nextInt();
 
         // NOTE: This could have been a switch case statement.
-        // NOTE: Need error handling for invalid user input.
-        if (reportType == 1) {
+        // NOTE: Need error handling for invalid user input. (Loop)
+        if (report1Type == 1) {
             this.employeeInformation();
 
-        } else if (reportType == 2) {
+        } else if (report1Type == 2) {
             this.payByJobTitle();
 
-        } else if (reportType == 3) {
+        } else if (report1Type == 3) {
             this.payByDivision();
 
         }
@@ -78,6 +78,6 @@ public class ReportGenerator {
     }
 
     public void payByDivision() {
-        System.out.println("payByDivision call."); // placeholder
+        System.out.println("payByDivision method call."); // placeholder
     }
 }

@@ -59,19 +59,19 @@ public class Main
 
             } else if (userInput == 2) {
                 ChangeEmployeeTable report2 = new ChangeEmployeeTable(conn);
-                // TODO: Method call
+                report2.changeHandling();
 
             } else if (userInput == 3) {
                 SearchForEmployee report3 = new SearchForEmployee(conn);
-                // TODO: Method call
+                report3.searchHandling();
 
             } else if (userInput == 4) {
                 UpdateEmployeeData report4 = new UpdateEmployeeData(conn);
-                // TODO: Method call
+                report4.updateDataHandling();
 
             } else if (userInput == 5) {
-                UpdateEmployeeSalary report2 = new UpdateEmployeeSalary(conn);
-                // TODO: Method call
+                UpdateEmployeeSalary report5 = new UpdateEmployeeSalary(conn);
+                report5.updateSalaryHandling();
 
             } else {
                 System.out.println("User input not valid.");

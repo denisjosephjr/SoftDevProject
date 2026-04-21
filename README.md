@@ -11,7 +11,7 @@ Features:
 1. Change employee table; add column SSN (no dashes)
 2. Search for an employee using name, SSN, empid to show their information
 3. Update an employee's data
-4. Update employee's salary for an increate of a particular percentage only for a salary amount range.
+4. Update employee's salary for an increase of a particular percentage only for a salary amount range.
    E.G. 3.2% for salary greater than, equal to 58K but less than 105K
 
 NOTE: There isn't a logon/ authorization functionality.
