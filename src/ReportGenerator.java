@@ -10,11 +10,13 @@ import java.sql.Statement;
 // Consider making this an interface that attaches to 3 other classes for the  3 types of reports.
 public class ReportGenerator {
     
-    private Connection conn; 
+    private Connection conn;
+    private Scanner scanner; 
 
     // Constructor with connection as an attribute
-    public ReportGenerator(Connection conn) {
+    public ReportGenerator(Connection conn, Scanner scanner) {
         this.conn = conn;
+        this.scanner = scanner;
     }
 
     // Method that handles the report interaction
@@ -26,12 +28,9 @@ public class ReportGenerator {
         System.out.println("2. Total pay for month by job title");
         System.out.println("3. Total pay for month by Division");
 
-        // Creates scanner to take user input
-        Scanner scanner2 = new Scanner(System.in);
-
         // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
-        int report1Type = scanner2.nextInt();
+        int report1Type = scanner.nextInt();
 
         // NOTE: This could have been a switch case statement.
         // NOTE: Need error handling for invalid user input. (Loop)
@@ -45,9 +44,6 @@ public class ReportGenerator {
             this.payByDivision();
 
         }
-
-        // Closes scanner
-        scanner2.close();
     }
     
     public void employeeInformation() {

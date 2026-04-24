@@ -7,11 +7,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ChangeEmployeeTable {
+
     private Connection conn;
+    private Scanner scanner;
 
     // Constructor with connection as an attribute
-    public ChangeEmployeeTable(Connection conn) {
+    public ChangeEmployeeTable(Connection conn, Scanner scanner) {
         this.conn = conn;
+        this.scanner = scanner;
     }
 
     public void changeHandling() {
@@ -21,12 +24,9 @@ public class ChangeEmployeeTable {
         // Only one option.. (Should there be more?)
         System.out.println("1. Change SSN");
 
-        // Creates scanner to take user input
-        Scanner scanner3 = new Scanner(System.in);
-
         // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
-        int report2Type = scanner3.nextInt();
+        int report2Type = scanner.nextInt();
 
         // NOTE: This could have been a switch case statement.
         // NOTE: Need error handling for invalid user input. (Loop)
@@ -36,9 +36,6 @@ public class ChangeEmployeeTable {
         } else {
             System.out.println("Invalid user input.");
         }
-
-        // Closes scanner
-        scanner3.close();
     }
 
     public void changeSSN() {

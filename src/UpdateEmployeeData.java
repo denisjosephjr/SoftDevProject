@@ -10,23 +10,19 @@ import java.sql.Statement;
 // Not sure how to handle this one. Too many parameters to change.
 public class UpdateEmployeeData {
     private Connection conn;
+    private Scanner scanner;
 
-    public UpdateEmployeeData(Connection conn) {
+    public UpdateEmployeeData(Connection conn, Scanner scanner) {
         this.conn = conn;
+        this.scanner = scanner;
     }
 
     public void updateDataHandling() {
         System.out.println("updateDataHandling method called."); // Placeholder
 
-        // Creates scanner to take user input
-        Scanner scanner5 = new Scanner(System.in);
-
         // Takes report type
         System.out.print("\nEmpty option for user input: ");
-        int report4Type = scanner5.nextInt();
-
-        // Closes scanner
-        scanner5.close();
+        int report4Type = scanner.nextInt();
     }
 
     // methods? Use search for Employee to update employee?

@@ -10,10 +10,12 @@ import java.sql.Statement;
 public class SearchForEmployee {
 
     private Connection conn;
+    private Scanner scanner;
 
     // Constructor with connection as an attribute
-    public SearchForEmployee(Connection conn) {
+    public SearchForEmployee(Connection conn, Scanner scanner) {
         this.conn = conn;
+        this.scanner = scanner;
     }
 
     public void searchHandling() {
@@ -23,12 +25,9 @@ public class SearchForEmployee {
         System.out.println("2. SSN");
         System.out.println("3. empid");
 
-        // Creates scanner to take user input
-        Scanner scanner4 = new Scanner(System.in);
-
         // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
-        int report3Type = scanner4.nextInt();
+        int report3Type = scanner.nextInt();
 
         // NOTE: This could have been a switch case statement.
         // NOTE: Need error handling for invalid user input. (Loop)
@@ -42,9 +41,6 @@ public class SearchForEmployee {
             this.searchEmpid();
 
         }
-
-        // Closes scanner
-        scanner4.close();
     }
 
     public void searchName() {
