@@ -48,18 +48,40 @@ public class ReportGenerator {
     
     public void employeeInformation() {
         try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM employees");
+            // I need pay statement history.
+            String sql = """
+            SELECT 
+                CONCAT(e.Fname, ' ', e.Lname) AS full_name,
+                e.empid,
+                p.pay_date,
+                p.earnings,
 
-            // TODO: Make spacing uniform in terminal
-            while (rs.next()) { // while there is a next row
-                // print the string with the column label Fname
-                System.out.println(
-                    rs.getString("Fname") + "  " +
-                    rs.getString("Lname") + "  " +
-                    rs.getString("email") + "  " +
-                    rs.getDate("HireDate") + "  " +
-                    rs.getDouble("Salary")
+                (p.fed_tax + p.fed_med + p.fed_SS + p.state_tax + p.retire_401k + p.health_care) AS total_deductions,
+
+                (p.earnings - (p.fed_tax + p.fed_med + p.fed_SS + p.state_tax + p.retire_401k + p.health_care)) AS net_pay
+            FROM employees e
+            JOIN payroll p 
+            ON e.empid = p.empid
+            ORDER BY e.empid, p.pay_date;
+            """;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-6s %-12s %-10s %-10s %-10s%n",
+        "Name", "ID", "Pay Date", "Earnings", "Deductions", "Net Pay");
+
+            System.out.println("---------------------------------------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-6d %-12s %-10.2f %-10.2f %-10.2f%n",
+                    rs.getString("full_name"),
+                    rs.getInt("empid"),
+                    rs.getDate("pay_date"),
+                    rs.getDouble("earnings"),
+                    rs.getDouble("total_deductions"),
+                    rs.getDouble("net_pay")
                 );
             }
 

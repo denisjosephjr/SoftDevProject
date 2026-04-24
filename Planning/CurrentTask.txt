@@ -10,22 +10,22 @@ Get a general layout of project. (Done)
 
 ----------------------------------------------------------------------------------------------------
 Main:
-    Add a while loop in the selection part with the condition that user input isn't a quit value
+    (Add better error handling for bad inputs)
 
 ReportGenerator:
-    Add a while loop in reportHandling that handles user input errors.
-    Correct employeeInformation method.
     Write payByJobTitle method.
     Write payByDivision method.
+    (Add a while loop in reportHandling that handles user input errors.)
 
 ChangeEmployeeTable:
-    Add a while loop in changeHandling that handles user input errors.
+    Write changeSSN method.
+    (Add a while loop in changeHandling that handles user input errors.)
 
 SearchForEmployee:
-    Add a while loop in searchHandling that handles user input errors.
     Write searchName method.
     Write searchSSN method.
     Write searchEmpid method.
+    (Add a while loop in searchHandling that handles user input errors.)
     
 UpdateEmployeeData:
     Determine method structure.
