@@ -7,6 +7,7 @@ create table employees (
     empid INT primary key,
     Fname VARCHAR(255),
     Lname VARCHAR(255),
+    SSN VARCHAR(255),
     email VARCHAR(255),
     HireDate DATE,
     Salary DECIMAL
@@ -68,10 +69,10 @@ create table payroll (
 -- This part of the script adds test values to the database.
 -- use employeeData;
 
-insert into employees (empid, Fname, Lname, email, HireDate, Salary) values
-(1, 'Nolan', 'Grayson', 'omniman@yahoo.com', '2000-05-15', 200000),
-(2, 'Walter', 'White', 'heisenberg@email.com', '2005-09-20', 40000),
-(3, 'Mark', 'Grayson', 'invincible@gmail.com', '2023-01-10', 100000);
+insert into employees (empid, Fname, Lname, SSN, email, HireDate, Salary) values
+(1, 'Nolan', 'Grayson', '123-45-6789', 'omniman@yahoo.com', '2000-05-15', 200000),
+(2, 'Walter', 'White', '987-65-4321', 'heisenberg@email.com', '2005-09-20', 40000),
+(3, 'Mark', 'Grayson', '456-78-9123', 'invincible@gmail.com', '2023-01-10', 100000);
 
 insert into division (ID, Name, city, addressLine1, addressLine2, state, country, postalCode) values
 (10, 'Imperialism', 'Atlanta', '100 Aggression Ave', NULL, 'GA', 'USA', '30301'),
