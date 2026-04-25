@@ -43,7 +43,7 @@ public class Main
             
 
             // Welcomes user to the UX
-            System.out.println("\nHello User, welcome to the Employee Data UX.\n");
+            System.out.println("\nHello User, welcome to the Employee Data UX.");
 
             // User Input set.
             int userInput = 1;
@@ -52,7 +52,7 @@ public class Main
             while (userInput != 0) {
 
                 // Displays all options that the user can do with a corresponding number.
-                System.out.println("1. Generate Report");
+                System.out.println("\n1. Generate Report");
                 System.out.println("2. Change Employee Table");
                 System.out.println("3. Search for Employee");
                 System.out.println("4. Update Employee Data");
