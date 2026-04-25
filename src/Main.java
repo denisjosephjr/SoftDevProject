@@ -85,6 +85,9 @@ public class Main
                     UpdateEmployeeSalary report5 = new UpdateEmployeeSalary(conn, scanner);
                     report5.updateSalaryHandling();
 
+                } else if (userInput == 0) {
+                    System.out.println("Shutting down...");
+
                 } else {
                     System.out.println("User input not valid.");
                     // TODO: Still need better error handling.
