@@ -26,4 +26,15 @@ public class UpdateEmployeeData {
     }
 
     // methods? Use search for Employee to update employee?
+    /* 
+    6 Columns = 6 methods. WHERE empid =, SSN =, Name =
+    empid INT primary key,
+    Fname VARCHAR(255),
+    Lname VARCHAR(255),
+    email VARCHAR(255),
+    HireDate DATE,
+    Salary DECIMAL
+
+    Figure out update Queries.
+    */
 }

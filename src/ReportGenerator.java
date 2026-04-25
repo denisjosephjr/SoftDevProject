@@ -48,7 +48,6 @@ public class ReportGenerator {
     
     public void employeeInformation() {
         try {
-            // I need pay statement history.
             String sql = """
             SELECT 
                 CONCAT(e.Fname, ' ', e.Lname) AS full_name,
@@ -92,7 +91,24 @@ public class ReportGenerator {
 
 
     public void payByJobTitle() {
-        System.out.println("payByJobTitle method call."); // placeholder
+        try {
+            String sql = """
+            """;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            //System.out.printf();
+
+            System.out.println("---------------------------------------------------------------------");
+
+            while (rs.next()) {
+                //System.out.printf();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void payByDivision() {
