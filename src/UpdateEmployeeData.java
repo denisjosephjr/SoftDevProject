@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 // This class will up date an employee's data in the employee table.
 public class UpdateEmployeeData {
     private Connection conn;

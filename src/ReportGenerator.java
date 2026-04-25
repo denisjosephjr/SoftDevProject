@@ -47,6 +47,7 @@ public class ReportGenerator {
     }
     
     public void employeeInformation() {
+        // Doesn't display SSN
         try {
             String sql = """
             SELECT 
