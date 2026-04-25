@@ -52,6 +52,7 @@ public class SearchForEmployee {
             String sql = """
             SELECT 
                 CONCAT(Fname, ' ', Lname) AS full_name,
+                SSN,
                 empid
             FROM Employees
             WHERE CONCAT(Fname, ' ', Lname) LIKE '%""" + userSearch + "%';";
@@ -59,15 +60,16 @@ public class SearchForEmployee {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            System.out.printf("%-20s %-6s%n",
-        "Name", "ID");
+            System.out.printf("%-20s %-12s %-6s%n",
+        "Name", "SSN", "ID");
 
-            System.out.println("--------------------------");
+            System.out.println("--------------------------------------");
 
             while (rs.next()) {
                 System.out.printf(
-                    "%-20s %-6d%n",
+                    "%-20s %-12s %-6d%n",
                     rs.getString("full_name"),
+                    rs.getString("SSN"),
                     rs.getInt("empid")
                 );
             }
@@ -80,11 +82,70 @@ public class SearchForEmployee {
     
 
     public void searchSSN() {
-        System.out.println("searchSSN method call."); // Placeholder
+        try {
+            System.out.print("Enter SSN (XXX-XX-XXXX): ");
+            String userSearch = scanner.next();
+            String sql = """
+            SELECT 
+                CONCAT(Fname, ' ', Lname) AS full_name,
+                SSN,
+                empid
+            FROM Employees
+            WHERE SSN = '""" + userSearch + "';";
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-12s %-6s%n",
+        "Name", "SSN", "ID");
+
+            System.out.println("--------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-12s %-6d%n",
+                    rs.getString("full_name"),
+                    rs.getString("SSN"),
+                    rs.getInt("empid")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void searchEmpid() {
-        System.out.println("searchEmpid method call."); // Placeholder
+        try {
+            System.out.print("Enter input: ");
+            int userSearch = scanner.nextInt();
+
+            String sql = """
+            SELECT 
+                CONCAT(Fname, ' ', Lname) AS full_name,
+                empid
+            FROM Employees
+            WHERE empid = """ + userSearch + ";";
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-6s%n",
+        "Name", "ID");
+
+            System.out.println("--------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-6d%n",
+                    rs.getString("full_name"),
+                    rs.getInt("empid")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
