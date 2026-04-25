@@ -44,8 +44,40 @@ public class SearchForEmployee {
     }
 
     public void searchName() {
-        System.out.println("searchName method call."); // Placeholder
+        //System.out.println("searchName method call."); 
+        try {
+            System.out.print("Enter input: ");
+            String userSearch = scanner.next();
+
+            String sql = """
+            SELECT 
+                CONCAT(Fname, ' ', Lname) AS full_name,
+                empid
+            FROM Employees
+            WHERE CONCAT(Fname, ' ', Lname) LIKE '%""" + userSearch + "%';";
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-6s%n",
+        "Name", "ID");
+
+            System.out.println("--------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-6d%n",
+                    rs.getString("full_name"),
+                    rs.getInt("empid")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    
 
     public void searchSSN() {
         System.out.println("searchSSN method call."); // Placeholder
