@@ -1,4 +1,6 @@
 -- This part of the script creates the database.
+DROP DATABASE IF EXISTS employeeData;
+
 create database employeeData;
 
 use employeeData;
