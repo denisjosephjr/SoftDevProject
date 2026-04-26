@@ -47,8 +47,8 @@ public class ReportGenerator {
     }
     
     public void employeeInformation() {
+        // Doesn't display SSN
         try {
-            // I need pay statement history.
             String sql = """
             SELECT 
                 CONCAT(e.Fname, ' ', e.Lname) AS full_name,
@@ -92,10 +92,73 @@ public class ReportGenerator {
 
 
     public void payByJobTitle() {
-        System.out.println("payByJobTitle method call."); // placeholder
+        // Problem, month is hardcoded to April and doesn't auto update.
+        try {
+            String sql = """
+            SELECT 
+                jt.job_title,
+                SUM(p.earnings) AS total_pay
+            FROM employees e
+            JOIN employee_job_titles ejt ON e.empid = ejt.empid
+            JOIN job_titles jt ON ejt.job_title_id = jt.job_title_id
+            JOIN payroll p ON e.empid = p.empid
+            WHERE YEAR(p.pay_date) = 2026
+            AND MONTH(p.pay_date) = 4
+            GROUP BY jt.job_title
+            """;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-15s%n", "Job Title", "Total Pay");
+            System.out.println("----------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-15.2f%n",
+                    rs.getString("job_title"),
+                    rs.getDouble("total_pay")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void payByDivision() {
-        System.out.println("payByDivision method call."); // placeholder
+        // Potential Problem: this query assumes each employee belongs to exactly one division
+        try {
+            String sql = """
+            SELECT 
+                d.Name AS division_name,
+                SUM(p.earnings) AS total_pay
+            FROM employees e
+            JOIN employee_division ed ON e.empid = ed.empid
+            JOIN division d ON ed.div_ID = d.ID
+            JOIN payroll p ON e.empid = p.empid
+            WHERE YEAR(p.pay_date) = 2026
+            AND MONTH(p.pay_date) = 4
+            GROUP BY d.Name
+            ORDER BY total_pay DESC;
+            """;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            System.out.printf("%-20s %-15s%n", "Division", "Total Pay");
+            System.out.println("----------------------------------------");
+
+            while (rs.next()) {
+                System.out.printf(
+                    "%-20s %-15.2f%n",
+                    rs.getString("division_name"),
+                    rs.getDouble("total_pay")
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

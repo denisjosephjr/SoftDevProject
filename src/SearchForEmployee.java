@@ -35,7 +35,7 @@ public class SearchForEmployee {
             this.searchName();
 
         } else if (report3Type == 2) {
-            this.searchSSN();
+            //this.searchSSN();
 
         } else if (report3Type == 3) {
             this.searchEmpid();
@@ -52,7 +52,6 @@ public class SearchForEmployee {
             String sql = """
             SELECT 
                 CONCAT(Fname, ' ', Lname) AS full_name,
-                SSN,
                 empid
             FROM Employees
             WHERE CONCAT(Fname, ' ', Lname) LIKE '%""" + userSearch + "%';";
@@ -60,16 +59,15 @@ public class SearchForEmployee {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
-            System.out.printf("%-20s %-12s %-6s%n",
-        "Name", "SSN", "ID");
+            System.out.printf("%-20s %-6s%n",
+        "Name", "ID");
 
             System.out.println("--------------------------------------");
 
             while (rs.next()) {
                 System.out.printf(
-                    "%-20s %-12s %-6d%n",
+                    "%-20s %-6d%n",
                     rs.getString("full_name"),
-                    rs.getString("SSN"),
                     rs.getInt("empid")
                 );
             }
@@ -80,7 +78,7 @@ public class SearchForEmployee {
     }
 
     
-
+    /*
     public void searchSSN() {
         try {
             System.out.print("Enter SSN (XXX-XX-XXXX): ");
@@ -114,6 +112,7 @@ public class SearchForEmployee {
             e.printStackTrace();
         }
     }
+    */
 
     public void searchEmpid() {
         try {

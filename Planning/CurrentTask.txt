@@ -13,22 +13,19 @@ Main:
     (Add better error handling for bad inputs)
 
 ReportGenerator:
-    Write payByJobTitle method.
-    Write payByDivision method.
+    Make the handling method handle table with SSN and without.
     (Add a while loop in reportHandling that handles user input errors.)
 
 ChangeEmployeeTable:
-    Write changeSSN method.
     (Add a while loop in changeHandling that handles user input errors.)
 
 SearchForEmployee:
-    Write searchName method.
-    Write searchSSN method.
-    Write searchEmpid method.
+    Make the searchHandling method handle table with SSN and without.
     (Add a while loop in searchHandling that handles user input errors.)
     
 UpdateEmployeeData:
-    Determine method structure.
+    Debug.
 
 UpdateEmployeeSalary:
-    Determine method structure.
+    Write handling method.
+    Write update method.
