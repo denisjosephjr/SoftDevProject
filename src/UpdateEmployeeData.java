@@ -107,7 +107,7 @@ public class UpdateEmployeeData {
         System.out.println("2. Last Name");
         System.out.println("3. Email");
         System.out.println("4. Hire Date");
-        System.out.println("5. Salary");
+        System.out.println("5. SSN");
         System.out.print("Enter choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -117,7 +117,7 @@ public class UpdateEmployeeData {
             case 2: updateLname(empId);    break;
             case 3: updateEmail(empId);    break;
             case 4: updateHireDate(empId); break;
-            case 5: updateSalary(empId);   break;
+            case 5: updateSSN(empId);   break;
             default: System.out.println("Invalid choice.");
         }
     }
@@ -146,10 +146,20 @@ public class UpdateEmployeeData {
         runUpdate("UPDATE employees SET HireDate = ? WHERE empid = ?", date, empId);
     }
 
-    private void updateSalary(int empId) {
-        System.out.print("Enter new Salary: ");
-        String salary = scanner.nextLine();
-        runUpdate("UPDATE employees SET Salary = ? WHERE empid = ?", salary, empId);
+    private void updateSSN(int empId) {
+        try {
+            System.out.print("Enter new SSN (9 digits no dashes): ");
+            //make sure the user inputs an int, otherwise catch the exception and prompt them again
+            String ssn = scanner.next();
+            if (!ssn.matches("\\d{9}")) {
+                System.out.println("Invalid input. SSN must be a 9-digit number.");
+                return;
+            }
+            ssn = ssn.replaceAll("(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3"); // Format as XXX-XX-XXXX
+            runUpdate("UPDATE employees SET ssn = ? WHERE empid = ?", ssn, empId);
+        } catch (Exception e) {
+            System.out.println("SSN column does not exist. Please add the SSN column to the employees table before updating SSN data.");
+        }
     }
 
     private void runUpdate(String query, String newValue, int empId) {

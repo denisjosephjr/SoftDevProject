@@ -76,15 +76,21 @@ public class SearchForEmployee {
 
     public void searchSSN() {
         try {
-            System.out.print("Enter SSN (XXX-XX-XXXX): ");
-            String userSearch = scanner.next();
+            System.out.print("Enter SSN (9 digits no dashes): ");
+            //make sure the user inputs an int, otherwise catch the exception and prompt them again
+            String userInput = scanner.next();
+            if (!userInput.matches("\\d{9}")) {
+                System.out.println("Invalid input. SSN must be a 9-digit number.");
+                return;
+            }
+            userInput = userInput.replaceAll("(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3"); // Format as XXX-XX-XXXX
             String sql = """
             SELECT 
                 CONCAT(Fname, ' ', Lname) AS full_name,
                 SSN,
                 empid
             FROM Employees
-            WHERE SSN = '""" + userSearch + "';";
+            WHERE SSN = '""" + userInput + "';";
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

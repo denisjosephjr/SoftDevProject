@@ -23,7 +23,7 @@ public class ChangeEmployeeTable {
 
         // Only one option.. (Should there be more?)
         System.out.println("1. Add SSN Column");
-        System.out.println("(2. Delete SSN Column)");
+        System.out.println("2. Delete SSN Column");
 
         // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
