@@ -54,10 +54,16 @@ public class UpdateEmployeeData {
     // --- Search Methods ---
 
     private int searchByEmpId() {
-        System.out.print("Enter Employee ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-
+        int id;
+        try {
+            System.out.print("Enter Employee ID: ");
+            id = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine(); // Clear the invalid input
+            return -1;
+        }
+        
         String query = "SELECT empid, Fname, Lname, email FROM employees WHERE empid = ?";
         return findEmployee(query, String.valueOf(id));
     }
@@ -154,7 +160,6 @@ public class UpdateEmployeeData {
     private void updateSSN(int empId) {
         try {
             System.out.print("Enter new SSN (9 digits no dashes): ");
-            //make sure the user inputs an int, otherwise catch the exception and prompt them again
             String ssn = scanner.next();
             if (!ssn.matches("\\d{9}")) {
                 System.out.println("Invalid input. SSN must be a 9-digit number.");

@@ -1,5 +1,6 @@
 // Import for User Input
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -27,17 +28,19 @@ public class SearchForEmployee {
         System.out.print("\nPlease enter a number for a corresponding option: ");
         int report3Type = scanner.nextInt();
 
-        // NOTE: This could have been a switch case statement.
         // NOTE: Need error handling for invalid user input. (Loop)
-        if (report3Type == 1) {
-            this.searchName();
-
-        } else if (report3Type == 2) {
-            this.searchSSN();
-
-        } else if (report3Type == 3) {
-            this.searchEmpid();
-
+        switch (report3Type) {
+            case 1:
+                this.searchName();
+                break;
+            case 2:
+                this.searchSSN();
+                break;
+            case 3:
+                this.searchEmpid();
+                break;
+            default:
+                System.out.println("Invalid user input.");
         }
     }
 
@@ -90,10 +93,11 @@ public class SearchForEmployee {
                 SSN,
                 empid
             FROM Employees
-            WHERE SSN = '""" + userInput + "';";
+            WHERE SSN = ?;""";
 
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userInput);
+            ResultSet rs = pstmt.executeQuery();
 
             System.out.printf("%-20s %-12s %-6s%n",
         "Name", "SSN", "ID");
@@ -115,19 +119,26 @@ public class SearchForEmployee {
     }
 
     public void searchEmpid() {
+        int userSearch;
         try {
             System.out.print("Enter input: ");
-            int userSearch = scanner.nextInt();
-
-            String sql = """
-            SELECT 
-                CONCAT(Fname, ' ', Lname) AS full_name,
-                empid
-            FROM Employees
-            WHERE empid = """ + userSearch + ";";
-
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+            userSearch = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.next(); // Clear the invalid input
+            return;
+        }
+        String sql = """
+        SELECT 
+            CONCAT(Fname, ' ', Lname) AS full_name,
+            empid
+        FROM Employees
+        WHERE empid = ?;""";
+                
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userSearch);
+            ResultSet rs = pstmt.executeQuery();
 
             System.out.printf("%-20s %-6s%n",
         "Name", "ID");

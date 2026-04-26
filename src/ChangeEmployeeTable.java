@@ -1,10 +1,7 @@
 // Import for User Input
-import java.util.Scanner;
-
-// Imports for MySQL Integration
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class ChangeEmployeeTable {
 

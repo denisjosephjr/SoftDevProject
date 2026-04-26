@@ -13,10 +13,6 @@ java -cp "bin;lib/*" Main
 // Imports for MySQL Integration
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-// Import for User Input
 import java.util.Scanner;
 
 public class Main 
@@ -63,34 +59,33 @@ public class Main
                 userInput = scanner.nextInt();
 
                 // TODO: Define classes to link to this branching segment.
-                // NOTE: This could have been a switch case statement.
                 // NOTE: Need error handling for invalid user input.
-                if (userInput == 1) {
-                    ReportGenerator report1 = new ReportGenerator(conn, scanner);
-                    report1.reportHandling();
-
-                } else if (userInput == 2) {
-                    ChangeEmployeeTable report2 = new ChangeEmployeeTable(conn, scanner);
-                    report2.changeHandling();
-
-                } else if (userInput == 3) {
-                    SearchForEmployee report3 = new SearchForEmployee(conn, scanner);
-                    report3.searchHandling();
-
-                } else if (userInput == 4) {
-                    UpdateEmployeeData report4 = new UpdateEmployeeData(conn, scanner);
-                    report4.updateDataHandling();
-
-                } else if (userInput == 5) {
-                    UpdateEmployeeSalary report5 = new UpdateEmployeeSalary(conn, scanner);
-                    report5.updateSalaryHandling();
-
-                } else if (userInput == 0) {
-                    System.out.println("Shutting down...");
-
-                } else {
-                    System.out.println("User input not valid.");
-                    // TODO: Still need better error handling.
+                switch (userInput) {
+                    case 1:
+                        ReportGenerator report1 = new ReportGenerator(conn, scanner);
+                        report1.reportHandling();
+                        break;
+                    case 2:
+                        ChangeEmployeeTable report2 = new ChangeEmployeeTable(conn, scanner);
+                        report2.changeHandling();
+                        break;
+                    case 3:
+                        SearchForEmployee report3 = new SearchForEmployee(conn, scanner);
+                        report3.searchHandling();
+                        break;
+                    case 4:
+                        UpdateEmployeeData report4 = new UpdateEmployeeData(conn, scanner);
+                        report4.updateDataHandling();
+                        break;
+                    case 5:
+                        UpdateEmployeeSalary report5 = new UpdateEmployeeSalary(conn, scanner);
+                        report5.updateSalaryHandling();
+                        break;
+                    case 0:
+                        System.out.println("Shutting down...");
+                        break;
+                    default:
+                        System.out.println("User input invalid.");
                 }
             }
 
