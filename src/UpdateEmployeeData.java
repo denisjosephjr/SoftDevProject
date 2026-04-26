@@ -141,8 +141,13 @@ public class UpdateEmployeeData {
     }
 
     private void updateHireDate(int empId) {
-        System.out.print("Enter new Hire Date (YYYY-MM-DD): ");
+        System.out.print("Enter new Hire Date (YYYYMMDD): ");
         String date = scanner.nextLine();
+        if (!date.matches("\\d{8}")) {
+            System.out.println("Invalid input. Date must be in YYYYMMDD format.");
+            return;
+        }
+        date = date.replaceAll("(\\d{4})(\\d{2})(\\d{2})", "$1-$2-$3"); // Format as YYYY-MM-DD
         runUpdate("UPDATE employees SET HireDate = ? WHERE empid = ?", date, empId);
     }
 
