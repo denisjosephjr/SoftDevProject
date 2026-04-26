@@ -1,10 +1,8 @@
 // Import for User Input
-import java.util.Scanner;
-
-// Imports for MySQL Integration
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Scanner;
 
 // Three methods needed: searchName, searchSSN, searchEmpid
 public class SearchForEmployee {
@@ -35,7 +33,7 @@ public class SearchForEmployee {
             this.searchName();
 
         } else if (report3Type == 2) {
-            //this.searchSSN();
+            this.searchSSN();
 
         } else if (report3Type == 3) {
             this.searchEmpid();
@@ -44,7 +42,6 @@ public class SearchForEmployee {
     }
 
     public void searchName() {
-        //System.out.println("searchName method call."); 
         try {
             System.out.print("Enter input: ");
             String userSearch = scanner.next();
@@ -77,8 +74,6 @@ public class SearchForEmployee {
         }
     }
 
-    
-    /*
     public void searchSSN() {
         try {
             System.out.print("Enter SSN (XXX-XX-XXXX): ");
@@ -109,10 +104,9 @@ public class SearchForEmployee {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("SSN not found. Make sure to add the ssn column to the employees table and input valid SSN data.");
         }
     }
-    */
 
     public void searchEmpid() {
         try {
