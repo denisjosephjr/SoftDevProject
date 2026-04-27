@@ -1,15 +1,19 @@
-// Import for User Input
+// filepath: src/UpdateEmployeeSalaryUI.java
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UpdateEmployeeSalary {
+/**
+ * UI class for handling employee salary updates.
+ */
+public class UpdateEmployeeSalaryUI {
+
     private Connection conn;
     private Scanner scanner;
     private List<ISalaryUpdate> updates;
 
-    public UpdateEmployeeSalary(Connection conn, Scanner scanner) {
+    public UpdateEmployeeSalaryUI(Connection conn, Scanner scanner) {
         this.conn = conn;
         this.scanner = scanner;
         this.updates = new ArrayList<>();
@@ -19,7 +23,13 @@ public class UpdateEmployeeSalary {
     }
 
     public void updateSalaryHandling() {
-        System.out.print("\nHow would you like to update employee salary? (1. Percentage Increase, 2. Set Salary): ");
+        System.out.println("\nHow would you like to update employee salary?");
+        
+        for (int i = 0; i < updates.size(); i++) {
+            System.out.println((i + 1) + ". " + updates.get(i).getUpdateName());
+        }
+        
+        System.out.print("\nEnter choice: ");
         int userChoice = scanner.nextInt();
         
         if (userChoice >= 1 && userChoice <= updates.size()) {

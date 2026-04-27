@@ -1,48 +1,31 @@
+// filepath: src/UpdateEmployeeDataUI.java
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-/**
- * Handles employee data update operations.
- * UI logic is separated into UpdateEmployeeDataUI.
- */
-public class UpdateEmployeeData {
+public class UpdateEmployeeDataUI {
     private Connection conn;
     private Scanner scanner;
-    private List<IDataUpdate> updates;
 
-    public UpdateEmployeeData(Connection conn, Scanner scanner) {
+    public UpdateEmployeeDataUI(Connection conn, Scanner scanner) {
         this.conn = conn;
         this.scanner = scanner;
-        this.updates = new ArrayList<>();
-        
-        // Register available update types
-        updates.add(new FnameUpdate());
-        updates.add(new LnameUpdate());
-        updates.add(new EmailUpdate());
-        updates.add(new HireDateUpdate());
-        updates.add(new SSNUpdate());
     }
 
     public void updateDataHandling() {
-        System.out.println("updateDataHandling method called.");
-
         System.out.println("\n--- Update Employee Data ---");
         System.out.println("Search employee by:");
         System.out.println("1. Employee ID");
         System.out.println("2. Last Name");
         System.out.println("3. Email");
         System.out.print("\nEnter choice: ");
-        int report4Type = scanner.nextInt();
+        int searchType = scanner.nextInt();
         scanner.nextLine();
 
         int empId = -1;
 
-        switch (report4Type) {
+        switch (searchType) {
             case 1:
                 empId = searchByEmpId();
                 break;
@@ -65,8 +48,7 @@ public class UpdateEmployeeData {
         updateEmployeeField(empId);
     }
 
-    // --- Search Methods ---
-
+    // Reuse EmpidSearch logic for searching by Employee ID
     private int searchByEmpId() {
         int id;
         try {
@@ -77,25 +59,25 @@ public class UpdateEmployeeData {
             scanner.nextLine();
             return -1;
         }
-        
-        String query = "SELECT empid, Fname, Lname, email FROM employees WHERE empid = ?";
-        return findEmployee(query, String.valueOf(id));
+
+        String sql = "SELECT empid, Fname, Lname, email FROM employees WHERE empid = ?";
+        return findEmployee(sql, String.valueOf(id));
     }
 
     private int searchByLastName() {
         System.out.print("Enter Last Name: ");
         String lname = scanner.nextLine();
 
-        String query = "SELECT empid, Fname, Lname, email FROM employees WHERE Lname = ?";
-        return findEmployee(query, lname);
+        String sql = "SELECT empid, Fname, Lname, email FROM employees WHERE Lname = ?";
+        return findEmployee(sql, lname);
     }
 
     private int searchByEmail() {
         System.out.print("Enter Email: ");
         String email = scanner.nextLine();
 
-        String query = "SELECT empid, Fname, Lname, email FROM employees WHERE email = ?";
-        return findEmployee(query, email);
+        String sql = "SELECT empid, Fname, Lname, email FROM employees WHERE email = ?";
+        return findEmployee(sql, email);
     }
 
     private int findEmployee(String query, String param) {
@@ -113,29 +95,30 @@ public class UpdateEmployeeData {
             } else {
                 return -1;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Error searching employee: " + e.getMessage());
             return -1;
         }
     }
 
-    // --- Update Methods ---
-
     private void updateEmployeeField(int empId) {
         System.out.println("\nWhich field would you like to update?");
-        
-        for (int i = 0; i < updates.size(); i++) {
-            System.out.println((i + 1) + ". " + updates.get(i).getUpdateName());
-        }
-        
+        System.out.println("1. First Name");
+        System.out.println("2. Last Name");
+        System.out.println("3. Email");
+        System.out.println("4. Hire Date");
+        System.out.println("5. SSN");
         System.out.print("Enter choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();
 
-        if (choice >= 1 && choice <= updates.size()) {
-            updates.get(choice - 1).update(conn, scanner, empId);
-        } else {
-            System.out.println("Invalid choice.");
+        switch (choice) {
+            case 1: new FnameUpdate().update(conn, scanner, empId); break;
+            case 2: new LnameUpdate().update(conn, scanner, empId); break;
+            case 3: new EmailUpdate().update(conn, scanner, empId); break;
+            case 4: new HireDateUpdate().update(conn, scanner, empId); break;
+            case 5: new SSNUpdate().update(conn, scanner, empId); break;
+            default: System.out.println("Invalid choice.");
         }
     }
 }

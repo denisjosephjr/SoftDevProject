@@ -66,8 +66,8 @@ public class Main
                         report1.reportHandling();
                         break;
                     case 2:
-                        ChangeEmployeeTable report2 = new ChangeEmployeeTable(conn, scanner);
-                        report2.changeHandling();
+                        ChangeEmployeeTableUI report2 = new ChangeEmployeeTableUI(conn, scanner);
+                        report2.showMenu();
                         break;
                     case 3:
                         SearchForEmployee report3 = new SearchForEmployee(conn, scanner);
@@ -78,7 +78,7 @@ public class Main
                         report4.updateDataHandling();
                         break;
                     case 5:
-                        UpdateEmployeeSalary report5 = new UpdateEmployeeSalary(conn, scanner);
+                        UpdateEmployeeSalaryUI report5 = new UpdateEmployeeSalaryUI(conn, scanner);
                         report5.updateSalaryHandling();
                         break;
                     case 0:

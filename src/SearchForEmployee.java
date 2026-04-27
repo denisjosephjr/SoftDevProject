@@ -1,161 +1,38 @@
-// Import for User Input
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-// Three methods needed: searchName, searchSSN, searchEmpid
 public class SearchForEmployee {
 
     private Connection conn;
     private Scanner scanner;
+    private List<ISearch> searches;
 
-    // Constructor with connection as an attribute
     public SearchForEmployee(Connection conn, Scanner scanner) {
         this.conn = conn;
         this.scanner = scanner;
+        this.searches = new ArrayList<>();
+        
+        searches.add(new NameSearch());
+        searches.add(new SSNSearch());
+        searches.add(new EmpidSearch());
     }
 
     public void searchHandling() {
         System.out.println("How would you like to search for your Employee?");
 
-        System.out.println("1. Name");
-        System.out.println("2. SSN");
-        System.out.println("3. empid");
+        for (int i = 0; i < searches.size(); i++) {
+            System.out.println((i + 1) + ". " + searches.get(i).getSearchTypeName());
+        }
 
-        // Takes report type
         System.out.print("\nPlease enter a number for a corresponding option: ");
-        int report3Type = scanner.nextInt();
+        int searchType = scanner.nextInt();
 
-        // NOTE: Need error handling for invalid user input. (Loop)
-        switch (report3Type) {
-            case 1:
-                this.searchName();
-                break;
-            case 2:
-                this.searchSSN();
-                break;
-            case 3:
-                this.searchEmpid();
-                break;
-            default:
-                System.out.println("Invalid user input.");
+        if (searchType >= 1 && searchType <= searches.size()) {
+            searches.get(searchType - 1).search(conn, scanner);
+        } else {
+            System.out.println("Invalid user input.");
         }
     }
-
-    public void searchName() {
-        try {
-            System.out.print("Enter input: ");
-            String userSearch = scanner.next();
-
-            String sql = """
-            SELECT 
-                CONCAT(Fname, ' ', Lname) AS full_name,
-                empid
-            FROM Employees
-            WHERE CONCAT(Fname, ' ', Lname) LIKE '%""" + userSearch + "%';";
-
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            System.out.printf("%-20s %-6s%n",
-        "Name", "ID");
-
-            System.out.println("--------------------------------------");
-
-            while (rs.next()) {
-                System.out.printf(
-                    "%-20s %-6d%n",
-                    rs.getString("full_name"),
-                    rs.getInt("empid")
-                );
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void searchSSN() {
-        try {
-            System.out.print("Enter SSN (9 digits no dashes): ");
-            //make sure the user inputs an int, otherwise catch the exception and prompt them again
-            String userInput = scanner.next();
-            if (!userInput.matches("\\d{9}")) {
-                System.out.println("Invalid input. SSN must be a 9-digit number.");
-                return;
-            }
-            userInput = userInput.replaceAll("(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3"); // Format as XXX-XX-XXXX
-            String sql = """
-            SELECT 
-                CONCAT(Fname, ' ', Lname) AS full_name,
-                SSN,
-                empid
-            FROM Employees
-            WHERE SSN = ?;""";
-
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, userInput);
-            ResultSet rs = pstmt.executeQuery();
-
-            System.out.printf("%-20s %-12s %-6s%n",
-        "Name", "SSN", "ID");
-
-            System.out.println("--------------------------------------");
-
-            while (rs.next()) {
-                System.out.printf(
-                    "%-20s %-12s %-6d%n",
-                    rs.getString("full_name"),
-                    rs.getString("SSN"),
-                    rs.getInt("empid")
-                );
-            }
-
-        } catch (Exception e) {
-            System.out.println("SSN not found. Make sure to add the ssn column to the employees table and input valid SSN data.");
-        }
-    }
-
-    public void searchEmpid() {
-        int userSearch;
-        try {
-            System.out.print("Enter input: ");
-            userSearch = scanner.nextInt();
-        } catch (Exception e) {
-            System.out.println("Invalid input. Please enter a numeric value.");
-            scanner.next(); // Clear the invalid input
-            return;
-        }
-        String sql = """
-        SELECT 
-            CONCAT(Fname, ' ', Lname) AS full_name,
-            empid
-        FROM Employees
-        WHERE empid = ?;""";
-                
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userSearch);
-            ResultSet rs = pstmt.executeQuery();
-
-            System.out.printf("%-20s %-6s%n",
-        "Name", "ID");
-
-            System.out.println("--------------------------------------");
-
-            while (rs.next()) {
-                System.out.printf(
-                    "%-20s %-6d%n",
-                    rs.getString("full_name"),
-                    rs.getInt("empid")
-                );
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 }
