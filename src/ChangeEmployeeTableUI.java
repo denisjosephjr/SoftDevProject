@@ -17,6 +17,8 @@ public class ChangeEmployeeTableUI {
 
         System.out.println("1. Add SSN Column");
         System.out.println("2. Delete SSN Column");
+        System.out.println("3. Insert New Employee");
+        System.out.println("4. Remove Employee");
 
         System.out.print("\nPlease enter a number for a corresponding option: ");
         int changeType = scanner.nextInt();
@@ -24,6 +26,8 @@ public class ChangeEmployeeTableUI {
         switch (changeType) {
             case 1 -> tableChange.addSSNColumn();
             case 2 -> tableChange.deleteSSNColumn();
+            case 3 -> tableChange.insertNewEmployee();
+            case 4 -> tableChange.removeEmployee();
             default -> System.out.println("Invalid user input.");
         }
     }

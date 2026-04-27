@@ -43,4 +43,65 @@ public class ChangeEmployeeTable {
             e.printStackTrace();
         }
     }
+
+    public void insertNewEmployee() {
+        String firstName;
+        String lastName;
+        int empId;
+        try {
+            System.out.print("Enter first name: ");
+            firstName = scanner.next();
+
+            System.out.print("Enter last name: ");
+            lastName = scanner.next();
+
+            System.out.print("Enter employee ID (must be unique): ");
+            empId = scanner.nextInt();
+        } catch (Exception e) {
+            scanner.next();
+            System.out.println("Invalid input. Please enter the correct data types.");
+            return;
+        }
+
+
+            String sql = """
+            INSERT INTO Employees (empid, Fname, Lname) VALUES (%d, '%s', '%s');
+            """.formatted(empId, firstName, lastName);
+        try {
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+            System.out.println("New employee inserted successfully.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeEmployee() {
+        int empId;
+        try {
+            System.out.print("Enter employee ID to remove: ");
+            empId = scanner.nextInt();
+        } catch (Exception e) {
+            scanner.next();
+            System.out.println("Invalid input. Please enter a numeric employee ID.");
+            return;
+        }
+
+        String sql = """
+        DELETE FROM Employees WHERE empid = %d;
+        """.formatted(empId);
+        try {
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(sql);
+            if (rowsAffected > 0) {
+                System.out.println("Employee removed successfully.");
+            } else {
+                System.out.println("No employee found with the given ID.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
