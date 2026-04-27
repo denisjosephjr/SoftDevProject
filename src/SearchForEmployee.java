@@ -24,9 +24,16 @@ public class SearchForEmployee {
         for (int i = 0; i < searches.size(); i++) {
             System.out.println((i + 1) + ". " + searches.get(i).getSearchTypeName());
         }
-
-        System.out.print("\nPlease enter a number for a corresponding option: ");
-        int searchType = scanner.nextInt();
+        int searchType;
+        try {
+            System.out.print("\nPlease enter a number for a corresponding option: ");
+            searchType = scanner.nextInt();
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.nextLine(); // Clear the invalid input
+            return; // Exit the method to allow the user to try again
+        }
 
         if (searchType >= 1 && searchType <= searches.size()) {
             searches.get(searchType - 1).search(conn, scanner);

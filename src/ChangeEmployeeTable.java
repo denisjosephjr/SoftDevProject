@@ -74,7 +74,7 @@ public class ChangeEmployeeTable {
             System.out.println("New employee inserted successfully.");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error inserting new employee. Please ensure the employee ID is unique and try again.");
         }
     }
 
