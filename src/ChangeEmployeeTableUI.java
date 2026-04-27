@@ -2,7 +2,6 @@ import java.sql.Connection;
 import java.util.Scanner;
 
 public class ChangeEmployeeTableUI {
-
     private Connection conn;
     private Scanner scanner;
     private ChangeEmployeeTable tableChange;

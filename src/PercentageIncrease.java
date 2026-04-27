@@ -3,11 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-/**
- * Increases salary by a percentage within a salary range.
- */
 public class PercentageIncrease implements ISalaryUpdate {
-    
     @Override
     public String getUpdateName() {
         return "Percentage Increase";

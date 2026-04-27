@@ -1,11 +1,9 @@
-// filepath: src/NameSearch.java
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
 public class NameSearch implements ISearch {
-    
     @Override
     public String getSearchTypeName() {
         return "Name";

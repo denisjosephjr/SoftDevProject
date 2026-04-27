@@ -5,7 +5,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class EmployeeInformationReport implements IReport {
-    
     @Override
     public String getReportName() {
         return "Full-time employee information with pay statement history";

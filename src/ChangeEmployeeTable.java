@@ -3,12 +3,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Scanner;
 
-/**
- * Handles actual table modification operations.
- * UI logic is separated into ChangeEmployeeTableUI.
- */
 public class ChangeEmployeeTable {
-
     private Connection conn;
     private Scanner scanner;
 

@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class SetSalary implements ISalaryUpdate {
-    
     @Override
     public String getUpdateName() {
         return "Set Salary";

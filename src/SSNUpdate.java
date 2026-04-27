@@ -4,9 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Updates employee SSN.
- */
 public class SSNUpdate implements IDataUpdate {
     
     @Override

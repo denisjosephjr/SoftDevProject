@@ -4,11 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Updates employee hire date.
- */
 public class HireDateUpdate implements IDataUpdate {
-    
     @Override
     public String getUpdateName() {
         return "Hire Date";

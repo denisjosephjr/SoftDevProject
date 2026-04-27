@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class PayByDivisionReport implements IReport {
-    
     @Override
     public String getReportName() {
         return "Total pay for month by Division";

@@ -4,11 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Updates employee email.
- */
 public class EmailUpdate implements IDataUpdate {
-    
     @Override
     public String getUpdateName() {
         return "Email";

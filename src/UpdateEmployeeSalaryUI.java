@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * UI class for handling employee salary updates.
- */
 public class UpdateEmployeeSalaryUI {
-
     private Connection conn;
     private Scanner scanner;
     private List<ISalaryUpdate> updates;

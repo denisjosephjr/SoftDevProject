@@ -1,16 +1,3 @@
-/*
-The following is just command information for testing with Git BASH or another terminal.
-
-(Run with SoftDevProject as working directory)
-
-Compile:
-javac -d bin -cp "lib/*" src/*.java
-
-Run:
-java -cp "bin;lib/*" Main
-*/
-
-// Imports for MySQL Integration
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Scanner;

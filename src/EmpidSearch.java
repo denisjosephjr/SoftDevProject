@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class EmpidSearch implements ISearch {
-    
     @Override
     public String getSearchTypeName() {
         return "empid";

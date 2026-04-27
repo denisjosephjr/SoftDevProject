@@ -3,14 +3,13 @@ import java.util.Scanner;
 
 public interface ISearch {
     /**
-     * Searches for employees based on the search type.
-     * @param conn Database connection
-     * @param scanner Scanner for user input
+     * @param conn 
+     * @param scanner 
      */
     void search(Connection conn, Scanner scanner);
     
     /**
-     * @return The name/description of the search type
+     * @return
      */
     String getSearchTypeName();
 }

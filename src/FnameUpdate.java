@@ -4,11 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Updates employee first name.
- */
 public class FnameUpdate implements IDataUpdate {
-    
     @Override
     public String getUpdateName() {
         return "First Name";

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SearchForEmployee {
-
     private Connection conn;
     private Scanner scanner;
     private List<ISearch> searches;

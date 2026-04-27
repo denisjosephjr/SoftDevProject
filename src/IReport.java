@@ -3,9 +3,8 @@ import java.util.Scanner;
 
 public interface IReport {
     /**
-     * Generates the report based on the report type.
-     * @param conn Database connection
-     * @param scanner Scanner for user input
+     * @param conn 
+     * @param scanner 
      */
     void generate(Connection conn, Scanner scanner);
     

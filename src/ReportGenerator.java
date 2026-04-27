@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReportGenerator {
-    
     private Connection conn;
     private Scanner scanner; 
     private List<IReport> reports;

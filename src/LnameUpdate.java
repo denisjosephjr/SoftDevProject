@@ -1,14 +1,9 @@
-// filepath: src/LnameUpdate.java
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- * Updates employee last name.
- */
 public class LnameUpdate implements IDataUpdate {
-    
     @Override
     public String getUpdateName() {
         return "Last Name";

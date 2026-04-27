@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Handles employee data update operations.
- * UI logic is separated into UpdateEmployeeDataUI.
- */
 public class UpdateEmployeeData {
     private Connection conn;
     private Scanner scanner;
